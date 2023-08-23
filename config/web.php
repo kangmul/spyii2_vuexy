@@ -11,7 +11,28 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'controllerMap' => [
+                'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    'userClassName' => 'app\models\User',
+                    'idField' => 'id',
+                    'usernameField' => 'username',
+                    // 'fullnameField' => 'profile.full_name',
+                ],
+            ],
+            'mainLayout' => '@app/views/layouts/mainMdmAdmin.php',
+        ]
+    ],
+
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DBManager',
+        ],
+
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'QJuLNE1J4jf0uf3ZnkB1o0kH7fFs0aeK',
@@ -51,6 +72,17 @@ $config = [
         ],
         
     ],
+
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
+            'debug/*',
+            'gii/*'
+        ]
+    ],
+
     'params' => $params,
 ];
 
