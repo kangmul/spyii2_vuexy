@@ -4,7 +4,10 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
+    'timeZone' => 'Asia/Jakarta',
+    'name' => 'Starter APP',
     'id' => 'basic',
+    'defaultRoute' => 'site/index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -13,22 +16,73 @@ $config = [
     ],
 
     'modules' => [
+        'dashboard' => [
+            'class' => 'app\modules\dashboard\Module',
+        ],
+        'blog' => [
+            'class' => 'app\modules\blog\Module',
+        ],
+        'profile' => [
+            'class' => 'app\modules\profile\Module',
+        ],
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'controllerMap' => [
-                'assignment' => [
-                    'class' => 'mdm\admin\controllers\AssignmentController',
-                    'userClassName' => 'app\models\User',
-                    'idField' => 'id',
-                    'usernameField' => 'username',
-                    // 'fullnameField' => 'profile.full_name',
-                ],
-            ],
-            'mainLayout' => '@app/views/layouts/mainMdmAdmin.php',
+            // 'layout' => 'left-menu', // it can be '@path/to/your/layout'.
+            'layout' => 'right-menu', // it can be '@path/to/your/layout'.
+            // 'controllerMap' => [
+            //     'assignment' => [
+            //         'class' => 'mdm\admin\controllers\AssignmentController',
+            //         'userClassName' => 'mdm\admin\models\User',
+            //         'userClassName' => 'app\models\User',
+            //         'idField' => 'id'
+            //     ],
+            // ],
+            // 'mainLayout' => '@app/views/layouts/mainMdmAdmin.php',
+        ],
+        'debug' => [
+            'class' => 'yii\debug\Module',
+            'allowedIPs' => ['*'],
         ]
     ],
 
     'components' => [
+        'session' => [
+            'class' => 'yii\web\DbSession',
+            'timeout' => 60*60*8,
+            'cookieParams' => [
+                'httpOnly' => true,
+            ],
+        ],
+
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'js' => []
+                ],
+                'yii\bootstrap\BootstrapAsset' => [
+                    'css' => [],
+                ],
+                'yii\bootstrap\BootstrapPluginAsset' => [
+                    'js' => []
+                ],
+            ],
+        ],
+
+        'view' => [
+            // 'class' => 'yii\web\View',
+            'theme' => [
+                // 'class' => 'yii\base\Theme',
+                'pathMap' => [
+                    '@app' => [
+                        '@app/themes/vuexy',
+                    ],
+                ],
+                'baseUrl' => '@web/themes/vuexy',
+                'basePath' => '@web/themes/vuexy'
+            ]
+        ],
+
         'authManager' => [
             'class' => 'yii\rbac\DBManager',
         ],
@@ -41,8 +95,10 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass' => 'mdm\admin\models\User',
+            // 'loginUrl' => ['admin/user/login'],
+            // 'identityClass' => 'app\models\User',
+            // 'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -68,6 +124,12 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                // [
+                //     'class' => '\defyma\helpers\EncryptUrl',
+                //     'pattern' => '',
+                //     'route' => 'site/index',
+                //     'skey' => 'myJ0u12n3y'
+                // ],
             ],
         ],
         
@@ -77,9 +139,8 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'site/*',
-            'admin/*',
-            'debug/*',
-            'gii/*'
+            // 'debug/*',
+            // 'admin/*'
         ]
     ],
 
@@ -99,7 +160,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '::1', ],
     ];
 }
 

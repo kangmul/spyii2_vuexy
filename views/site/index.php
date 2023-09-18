@@ -1,8 +1,8 @@
 <?php
 
 /** @var yii\web\View $this */
-
-$this->title = 'My Yii Application';
+$this->theme = Yii::$app->view->theme;
+$this->title = 'Starter Aplikasi';
 ?>
 <div class="site-index">
 

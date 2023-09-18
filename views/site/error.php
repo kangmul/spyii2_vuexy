@@ -10,8 +10,10 @@ use yii\helpers\Html;
 $this->title = $name;
 ?>
 <div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="text-center">
+        <h1><?= Html::encode($this->title) ?></h1>
+        <img src="<?= Yii::$app->request->baseUrl ?>/../themes/vuexy/img/<?= strpos($this->title, '404') ? '404.png' : '' ?>" alt="" height="320px">
+    </div>
 
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>

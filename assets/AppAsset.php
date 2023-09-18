@@ -20,12 +20,16 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
+        // 'css/site.css',
+        'css/home.css'
     ];
     public $js = [
+        'themes/vuexy/assets/js/home.js',
+        // <!-- Bootstrap core JS-->
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset'
+        // 'yii\web\YiiAsset',
+        // 'yii\bootstrap5\BootstrapAsset'
     ];
 }
