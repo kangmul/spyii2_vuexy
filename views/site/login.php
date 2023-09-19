@@ -83,10 +83,3 @@ $this->title = 'Login | My Starter Apps';
     <!-- Jumbotron -->
 </section>
 <!-- Section: Design Block -->
-
-
-<script>
-    $(document).ready(function(){
-        $('footer').hide();
-    })
-</script>

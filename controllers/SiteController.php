@@ -12,6 +12,9 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+    // public $layout = "home";
+    
+
     /**
      * {@inheritdoc}
      */
@@ -20,10 +23,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout'],
+                'only' => ['logout', 'contact'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'contact'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -43,13 +46,17 @@ class SiteController extends Controller
      */
     public function actions()
     {
+        $this->layout = 'home';
+
         return [
             'error' => [
+                'layout' => 'home',
                 'class' => 'yii\web\ErrorAction',
             ],
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+                'fontFile'=>dirname(__FILE__).'/../web/font/Caveat-VariableFont_wght.ttf',
             ],
         ];
     }
@@ -61,7 +68,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // var_dump(Yii::$app->view->theme);exit;
+        // return $this->render('index');
+        return $this->render('home');
     }
 
     /**
@@ -72,15 +81,18 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return $this->aksesWeb();
+            // return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            // return $this->goBack();
+            return $this->aksesWeb();
         }
 
         $model->password = '';
+        $this->layout = 'home';
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -124,5 +136,14 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * akses web apps
+     */
+    public function aksesWeb()
+    {
+        $this->layout = 'main';
+        return $this->render('index'); 
     }
 }

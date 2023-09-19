@@ -41,7 +41,7 @@ $this->registerAssetBundle(yii\web\JqueryAsset::className(), View::POS_HEAD);
 <?php $this->beginBody() ?>
 <!-- Home Layouts -->
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav" style="background-color: #2d2b2b; height: 40px !important">
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav" style="background-color: #2d2b2b;">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="<?= Url::toRoute(['site/index']) ?>"><?= Yii::$app->name; ?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

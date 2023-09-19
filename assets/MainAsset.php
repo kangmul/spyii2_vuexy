@@ -26,52 +26,53 @@ class MainAsset extends AssetBundle
         '../themes/vuexy/inicss.css',
 
         // <!-- BEGIN: Vendor CSS-->
-        '../themes/vuexy/app-assets/vendors/css/vendors.min.css',
-        '../themes/vuexy/app-assets/vendors/css/charts/apexcharts.css',
-        '../themes/vuexy/app-assets/vendors/css/extensions/toastr.min.css',
+        '/themes/vuexy/app-assets/vendors/css/vendors.min.css',
+        '/themes/vuexy/app-assets/vendors/css/charts/apexcharts.css',
+        '/themes/vuexy/app-assets/vendors/css/extensions/toastr.min.css',
         // <!-- END: Vendor CSS-->
 
         // <!-- BEGIN: Theme CSS-->
-        '../themes/vuexy/app-assets/css/bootstrap.css',
-        '../themes/vuexy/app-assets/css/bootstrap-extended.css',
-        '../themes/vuexy/app-assets/css/colors.css',
-        '../themes/vuexy/app-assets/css/components.css',
-        '../themes/vuexy/app-assets/css/themes/dark-layout.css',
-        '../themes/vuexy/app-assets/css/themes/bordered-layout.css',
-        '../themes/vuexy/app-assets/css/themes/semi-dark-layout.css',
+        '/themes/vuexy/app-assets/css/bootstrap.css',
+        '/themes/vuexy/app-assets/css/bootstrap-extended.css',
+        '/themes/vuexy/app-assets/css/colors.css',
+        '/themes/vuexy/app-assets/css/components.css',
+        '/themes/vuexy/app-assets/css/themes/dark-layout.css',
+        '/themes/vuexy/app-assets/css/themes/bordered-layout.css',
+        '/themes/vuexy/app-assets/css/themes/semi-dark-layout.css',
 
         // <!-- BEGIN: Page CSS-->
-        '../themes/vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css',
-        '../themes/vuexy/app-assets/css/pages/dashboard-ecommerce.css',
-        '../themes/vuexy/app-assets/css/plugins/charts/chart-apex.css',
-        '../themes/vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
+        '/themes/vuexy/app-assets/css/core/menu/menu-types/vertical-menu.css',
+        '/themes/vuexy/app-assets/css/pages/dashboard-ecommerce.css',
+        '/themes/vuexy/app-assets/css/plugins/charts/chart-apex.css',
+        '/themes/vuexy/app-assets/css/plugins/extensions/ext-component-toastr.css',
+        '/themes/vuexy/app-assets/css/pages/page-profile.css',
         // <!-- END: Page CSS-->
 
         // <!-- BEGIN: Custom CSS-->
-        '../themes/vuexy/assets/css/style.css',
+        '/themes/vuexy/assets/css/style.css',
         // <!-- END: Custom CSS-->
     ];
     public $js = [
         // <!-- BEGIN: Vendor JS-->
-        '../themes/vuexy/app-assets/vendors/js/vendors.min.js',
+        '/themes/vuexy/app-assets/vendors/js/vendors.min.js',
         // <!-- BEGIN Vendor JS-->
 
         // <!-- BEGIN: Page Vendor JS-->
-        '../themes/vuexy/app-assets/vendors/js/charts/apexcharts.min.js',
-        '../themes/vuexy/app-assets/vendors/js/extensions/toastr.min.js',
+        '/themes/vuexy/app-assets/vendors/js/charts/apexcharts.min.js',
+        '/themes/vuexy/app-assets/vendors/js/extensions/toastr.min.js',
         // <!-- END: Page Vendor JS-->
 
         // <!-- BEGIN: Theme JS-->
-        '../themes/vuexy/app-assets/js/core/app-menu.js',
-        '../themes/vuexy/app-assets/js/core/app.js',
+        '/themes/vuexy/app-assets/js/core/app-menu.js',
+        '/themes/vuexy/app-assets/js/core/app.js',
         // <!-- END: Theme JS-->
 
         // <!-- BEGIN: Page JS-->
-        '../themes/vuexy/app-assets/js/scripts/pages/dashboard-ecommerce.js',
+        '/themes/vuexy/app-assets/js/scripts/pages/dashboard-ecommerce.js',
         // <!-- END: Page JS-->
     ];
     public $depends = [
-        // 'yii\web\YiiAsset',
-        // 'yii\bootstrap5\BootstrapAsset'
+        'yii\web\YiiAsset',
+        'yii\bootstrap5\BootstrapAsset'
     ];
 }
